@@ -1,7 +1,9 @@
-# Pokedex
+# Pokedex  <img src="https://www.pngplay.com/wp-content/uploads/2/Pokeball-PNG-Pic-Background.png" width="50"/>
 
 
-<img src="./src/assets/mk.png"/>
+<p align="center">
+  <img src="https://purepng.com/public/uploads/large/purepng.com-pokemonpokemonpocket-monsterspokemon-franchisefictional-speciesone-pokemonmany-pokemonone-pikachu-1701527786742tsjsu.png" width="700" />
+</p>
 
 
 
