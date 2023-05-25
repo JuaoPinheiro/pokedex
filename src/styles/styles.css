@@ -1,0 +1,136 @@
+body {
+  background: linear-gradient(
+      0deg,
+      rgba(36, 0, 168, 1) 0%,
+      rgba(108, 40, 255, 1) 100%
+    )
+    no-repeat;
+  height: 100%;
+  min-height: 1500px;
+}
+
+.text-h1 {
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  color: #fff;
+  font-size: 35px;
+}
+
+.input-search {
+  width: 75%;
+  height: 50px;
+  background: #fff;
+  margin-left: 13%;
+  border-radius: 5px;
+  padding-left: 15px;
+  margin-bottom: 50px;
+  outline: none;
+  border: none;
+}
+
+.principal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.div-person {
+  background-color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.div-person:hover {
+  opacity: 0.7;
+}
+
+.div-person img {
+  width: 140px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  overflow: auto;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0px 0px 10px #999;
+  border-radius: 10px;
+  width: 50%;
+}
+
+.info-pokemon {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.info-pokemon img {
+  background: linear-gradient(
+    0deg,
+    rgba(36, 0, 168, 1) 0%,
+    rgba(108, 40, 255, 1) 100%
+  );
+  border-radius: 50%;
+  height: 150px;
+}
+
+.label {
+  background-color: #999;
+  color: #000;
+  margin-right: 10px;
+  border-radius: 5px;
+  padding: 5px 5px;
+}
+
+.box-evolution {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  list-style: none;
+}
+
+.stats-h2,
+.evolution-h2 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.skill {
+  list-style: none;
+  padding: 5px 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  width: 150px;
+  border-radius: 5px;
+  background-color: #5748ff;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.btn-closed {
+  padding: 10px 10px;
+  background: linear-gradient(
+    0deg,
+    rgba(36, 0, 168, 1) 0%,
+    rgba(108, 40, 255, 1) 100%
+  );
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+}
