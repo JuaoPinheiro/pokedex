@@ -5,6 +5,9 @@ import CardPokemon from './components/CardPokemon';
 import getEvolutionData from './components/EvolutionsChain';
 import Stats from './components/Stats';
 
+import './styles/styles.css';
+import './styles/responsibleStyle.css';
+
 interface Pokemon {
   name: string;
   url: string;
