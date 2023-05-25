@@ -43,7 +43,6 @@ function App(): JSX.Element {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [pokemonSelected, setPokemonSelected] = useState<Pokemon | null>(null);
   const [showFrontSprite, setShowFrontSprite] = useState<boolean>(true);
-  const [evolutionChain, setEvolutionChain] = useState<any[]>([]);
   const [evolutionData, setEvolutionData] = useState<EvolutionData[]>([]);
 
   useEffect(() => {
@@ -56,10 +55,6 @@ function App(): JSX.Element {
         console.log(error);
       });
   }, []);
-
-  const getId = (pokemon: Pokemon): number => {
-    return Number(pokemon.url.split('/')[6]);
-  };
 
   const getName = (pokemon: Pokemon): string => {
     return pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
