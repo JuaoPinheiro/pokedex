@@ -9,7 +9,7 @@
 
 Este projeto é uma Pokédex desenvolvida com tecnologias modernas para fornecer uma experiência interativa e visualmente atraente aos fãs de Pokémon. Utilizando TypeScript e React JS, a aplicação permite que os usuários pesquisem e visualizem informações detalhadas sobre diferentes Pokémon. O Chakra UI foi adotado para criar uma interface responsiva e elegante, garantindo uma experiência de usuário agradável. A integração com a API do Pokémon é realizada por meio do Axios, possibilitando o acesso aos dados dos Pokémon de forma rápida e eficiente. Além disso, o CSS foi utilizado para estilização personalizada, proporcionando um visual único e cativante. No geral, esse projeto combina tecnologias modernas e recursos interativos para oferecer aos usuários uma Pokédex completa e envolvente
 
-### Link do projeto: <a href='pokedex-tau-jet.vercel.app'> Aqui!</a>
+### Link do projeto: <a href='https://pokedex-tau-jet.vercel.app'> Aqui!</a>
 
 # 👨‍💻 Instalação
 
