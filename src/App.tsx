@@ -1,20 +1,50 @@
-import React, { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Box, Container, Flex, Heading, Input } from '@chakra-ui/react';
 import CardPokemon from './components/CardPokemon';
-import Stats from './components/Stats';
-import { Container, Box, Heading, Input, Flex } from '@chakra-ui/react';
-import './styles/labelTypes.css';
-import './styles/responsibleStyle.css';
 import getEvolutionData from './components/EvolutionsChain';
+import Stats from './components/Stats';
 
-function App() {
-  const [pokemons, setPokemons] = useState([]);
-  const [search, setSearch] = useState('');
-  const [showModal, setShowModal] = useState(false);
-  const [pokemonSelected, setPokemonSelected] = useState(null);
-  const [showFrontSprite, setShowFrontSprite] = useState(true);
-  const [evolutionChain, setEvolutionChain] = useState([]);
-  const [evolutionData, setEvolutionData] = useState([]);
+interface Pokemon {
+  name: string;
+  url: string;
+  stats: {
+    stat: {
+      name: string;
+    };
+    base_stat: number;
+  }[];
+  types: {
+    slot: number;
+    type: {
+      name: string;
+    };
+  }[];
+  abilities: {
+    ability: {
+      name: string;
+    };
+  }[];
+  id: number;
+  height: number;
+  weight: number;
+  species: {
+    url: string;
+  };
+}
+
+interface EvolutionData {
+  spriteURL: string;
+}
+
+function App(): JSX.Element {
+  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+  const [search, setSearch] = useState<string>('');
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [pokemonSelected, setPokemonSelected] = useState<Pokemon | null>(null);
+  const [showFrontSprite, setShowFrontSprite] = useState<boolean>(true);
+  const [evolutionChain, setEvolutionChain] = useState<any[]>([]);
+  const [evolutionData, setEvolutionData] = useState<EvolutionData[]>([]);
 
   useEffect(() => {
     axios
@@ -27,15 +57,15 @@ function App() {
       });
   }, []);
 
-  const getId = (pokemon) => {
+  const getId = (pokemon: Pokemon): number => {
     return Number(pokemon.url.split('/')[6]);
   };
 
-  const getName = (pokemon) => {
+  const getName = (pokemon: Pokemon): string => {
     return pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
   };
 
-  const fetchEvolutionData = (speciesUrl) => {
+  const fetchEvolutionData = (speciesUrl: string): void => {
     axios
       .get(speciesUrl)
       .then((speciesResponse) => {
@@ -59,11 +89,11 @@ function App() {
       });
   };
 
-  const showPokemon = (id) => {
+  const showPokemon = (id: number): void => {
     axios
       .get(`https://pokeapi.co/api/v2/pokemon/${id}`)
       .then((response) => {
-        const pokemonData = response.data;
+        const pokemonData: Pokemon = response.data;
         const { height, weight } = pokemonData;
         setPokemonSelected({
           ...pokemonData,
@@ -98,7 +128,7 @@ function App() {
           placeholder="Pesquisar"
         />
         <Flex className="principal">
-          {filteredPokemons.map((pokemon) => (
+          {filteredPokemons.map((pokemon: Pokemon) => (
             <CardPokemon
               key={pokemon.name}
               pokemon={pokemon}
@@ -174,14 +204,16 @@ function App() {
                   <Box>
                     {evolutionData.length > 0 ? (
                       <ul className="box-evolution">
-                        {evolutionData.slice(0, 3).map((evolution, index) => (
-                          <li key={index}>
-                            <img
-                              src={evolution.spriteURL}
-                              alt={`Evolução ${index + 1}`}
-                            />
-                          </li>
-                        ))}
+                        {evolutionData
+                          .slice(0, 3)
+                          .map((evolution: EvolutionData, index: number) => (
+                            <li key={index}>
+                              <img
+                                src={evolution.spriteURL}
+                                alt={`Evolução ${index + 1}`}
+                              />
+                            </li>
+                          ))}
                       </ul>
                     ) : (
                       <p>Nenhuma evolução disponível.</p>

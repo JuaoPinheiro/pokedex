@@ -1,7 +1,18 @@
 import { Box } from '@chakra-ui/react';
 import '../styles/labelTypes.css';
 
-const getStatClass = (statName) => {
+interface Stat {
+  stat: {
+    name: string;
+  };
+  base_stat: number;
+}
+
+interface Pokemon {
+  stats: Stat[];
+}
+
+const getStatClass = (statName: string): string => {
   switch (statName) {
     case 'hp':
       return 'stat-hp';
@@ -20,8 +31,8 @@ const getStatClass = (statName) => {
   }
 };
 
-function Stats({ pokemon }) {
-  const transformName = (name) => {
+function Stats({ pokemon }: { pokemon: Pokemon }): JSX.Element {
+  const transformName = (name: string): string => {
     if (name.includes('-')) {
       let parts = name.split('-');
       return `${parts[0].charAt(0).toUpperCase()} ${parts[1]
@@ -36,7 +47,7 @@ function Stats({ pokemon }) {
       <Box className="pokemon-stats">
         {pokemon.stats.map((stat, index) => (
           <span
-            key={stat.stat.name}
+            key={index}
             className={`label-stats ${getStatClass(stat.stat.name)}`}
           >
             {transformName(stat.stat.name)} {stat.base_stat}
@@ -46,4 +57,5 @@ function Stats({ pokemon }) {
     </article>
   );
 }
+
 export default Stats;

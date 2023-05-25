@@ -1,12 +1,22 @@
 import { Box, Heading } from '@chakra-ui/react';
 import '../styles/styles.css';
 
-function CardPokemon({ pokemon, clicked }) {
-  const getId = (pokemon) => {
+interface Pokemon {
+  url: string;
+  name: string;
+}
+
+interface CardPokemonProps {
+  pokemon: Pokemon;
+  clicked: (id: number) => void;
+}
+
+function CardPokemon({ pokemon, clicked }: CardPokemonProps) {
+  const getId = (pokemon: Pokemon) => {
     return Number(pokemon.url.split('/')[6]);
   };
 
-  const getName = (pokemon) => {
+  const getName = (pokemon: Pokemon) => {
     return pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
   };
 

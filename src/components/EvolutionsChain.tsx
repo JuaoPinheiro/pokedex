@@ -1,11 +1,30 @@
 import axios from 'axios';
 
-const getEvolutionData = async (evolutionChain) => {
-  const data = [];
+interface Evolution {
+  species: {
+    url: string;
+  };
+  evolves_to: Evolution[];
+}
+
+interface PokemonData {
+  id: number;
+}
+
+interface EvolutionDetails {
+  spriteURL: string;
+}
+
+const getEvolutionData = async (
+  evolutionChain: Evolution
+): Promise<EvolutionDetails[]> => {
+  const data: EvolutionDetails[] = [];
   let evolutionCount = 0;
 
-  const getEvolutionDetails = async (speciesUrl) => {
-    const response = await axios.get(speciesUrl);
+  const getEvolutionDetails = async (
+    speciesUrl: string
+  ): Promise<EvolutionDetails> => {
+    const response = await axios.get<PokemonData>(speciesUrl);
     const pokemonData = response.data;
 
     return {
@@ -13,7 +32,7 @@ const getEvolutionData = async (evolutionChain) => {
     };
   };
 
-  const traverseEvolutions = async (evolution) => {
+  const traverseEvolutions = async (evolution: Evolution) => {
     const speciesUrl = evolution.species?.url;
 
     if (speciesUrl) {
